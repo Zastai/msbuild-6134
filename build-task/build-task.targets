@@ -1,0 +1,19 @@
+<Project>
+
+  <Target Name="UseBuildTask" AfterTargets="CopyFilesToOutputDirectory">
+    <!-- The project reference is supposed to ensure the build output exists. -->
+    <!-- Instead of setting up a dummy build task and using it, this just checks for that build output. -->
+    <PropertyGroup>
+      <TaskTarget Condition=" '$(MSBuildRuntimeType)' == 'Full' ">net472</TaskTarget>
+      <TaskTarget Condition=" '$(MSBuildRuntimeType)' != 'Full' ">netcoreapp2.1</TaskTarget>
+      <TaskAssembly>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TaskTarget)\build-task.dll</TaskAssembly>
+      <BuildOutputExists Condition=" Exists('$(TaskAssembly)') ">true</BuildOutputExists>
+      <BuildOutputExists Condition=" '$(BuildOutputExists)' == '' ">false</BuildOutputExists>
+    </PropertyGroup>
+    <Message Importance="high" Text="OK, build task assembly ($(TaskTarget)) exists during build of $(MSBuildProjectName) for $(TargetFramework)"
+             Condition=" '$(BuildOutputExists)' == 'true' " />
+    <Warning Text="Oops, build task assembly ($(TaskTarget)) does not exist during build of $(MSBuildProjectName) for $(TargetFramework)"
+             Condition=" '$(BuildOutputExists)' != 'true' " />
+  </Target>
+
+</Project>

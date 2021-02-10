@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;netcoreapp2.1</TargetFrameworks>
+    <RootNamespace>MSBuild.Issue6134.BuildTask</RootNamespace>
+  </PropertyGroup>
+
+  <Target Name="EnsureTheBuildTakesAWhileToFinish" BeforeTargets="CopyFilesToOutputDirectory"
+          Condition=" ('$(MSBuildRuntimeType)' == 'Full' And '$(TargetFramework)' == 'net472') Or ('$(MSBuildRuntimeType)' != 'Full' And '$(TargetFramework)' == 'netcoreapp2.1') ">
+    <Exec Command="ping -n 6 127.0.0.1 > nul" />
+  </Target>
+
+</Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <RootNamespace>MSBuild.Issue6134.Consumer1</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\build-task\build-task.csproj" ReferenceBuildOutput="False" />
+  </ItemGroup>
+
+  <Import Project="..\build-task\build-task.targets" />
+
+</Project>
