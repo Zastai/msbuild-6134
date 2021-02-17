@@ -7,7 +7,7 @@
 
   <Target Name="EnsureTheBuildTakesAWhileToFinish" BeforeTargets="CopyFilesToOutputDirectory"
           Condition=" ('$(MSBuildRuntimeType)' == 'Full' And '$(TargetFramework)' == 'net472') Or ('$(MSBuildRuntimeType)' != 'Full' And '$(TargetFramework)' == 'netcoreapp2.1') ">
-    <Exec Command="ping -n 6 127.0.0.1 > nul" />
+    <Exec Command="ping -n 6 127.0.0.1 > nul" YieldDuringToolExecution="true" />
   </Target>
 
 </Project>
