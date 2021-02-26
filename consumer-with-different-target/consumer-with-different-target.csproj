@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\build-task\build-task.csproj" ReferenceBuildOutput="False" />
+    <ProjectReference Include="..\build-task\build-task.csproj" ReferenceOutputAssembly="False" />
   </ItemGroup>
 
   <Import Project="..\build-task\build-task.targets" />
