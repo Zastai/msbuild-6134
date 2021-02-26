@@ -5,13 +5,6 @@
     <RootNamespace>MSBuild.Issue6134.Consumer2</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\build-task\build-task.csproj" ReferenceOutputAssembly="False">
-      <SetTargetFramework Condition=" '$(MSBuildRuntimeType)' == 'Full' ">TargetFramework=net472</SetTargetFramework>
-      <SetTargetFramework Condition=" '$(MSBuildRuntimeType)' != 'Full' ">TargetFramework=netcoreapp2.1</SetTargetFramework>
-    </ProjectReference>
-  </ItemGroup>
-
   <Import Project="..\build-task\build-task.targets" />
 
 </Project>
